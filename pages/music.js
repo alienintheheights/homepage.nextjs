@@ -1,4 +1,6 @@
 import React, {  useEffect }  from 'react'
+import Head from 'next/head'
+
 import Bandcamp from '../components/Bandcamp'
 import MusicLinks from '../components/MusicLinks'
 
@@ -8,6 +10,9 @@ export default function Music() {
     }, [])
     return (
         <div className=''>
+            <Head>
+                    <title>Fauxmat: music</title>
+            </Head>
             <div className='fauxmat-jumbo fauxmat-music-photo'>
                 Solos and Collaborations
             </div>

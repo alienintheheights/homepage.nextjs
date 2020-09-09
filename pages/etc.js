@@ -1,4 +1,6 @@
 import React, {  useEffect }  from 'react'
+import Head from 'next/head'
+
 import PhotoLinks from '../components/PhotoLinks'
 
 export default function Etc() {
@@ -8,6 +10,9 @@ export default function Etc() {
 
     return (
         <div className=''>
+            <Head>
+                    <title>Fauxmat: links, etc.</title>
+            </Head>
             <div className='fauxmat-jumbo fauxmat-link-photo'>
                 Links <small>(with unrelated photos)</small>
             </div>

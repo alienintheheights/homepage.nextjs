@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Head from 'next/head'
 import { Row, Col } from 'react-bootstrap'
 
 import Link from 'next/link'
@@ -9,6 +9,9 @@ export default function Blog({ posts }) {
     
     return (
         <div id='fauxmat-postgrid'>
+             <Head>
+                    <title>Fauxmat: blog</title>
+            </Head>
             <Row>
                 {posts && posts.map((post, index) => {
                     const divStyle = {

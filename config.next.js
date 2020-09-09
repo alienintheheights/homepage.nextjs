@@ -7,16 +7,17 @@ module.exports = withSass({
 });
 
 module.exports = {
-    exportPathMap: async function (
-      defaultPathMap,
-      { dev, dir, outDir, distDir, buildId }
-    ) {
-      return {
-        '/': { page: '/' },
-        '/music': { page: '/music' }, 
-        '/video': { page: '/video' }, 
-        '/etc': { page: '/etc' }, 
-        '/blog': { page: '/blog' }
-      }
-    },
-  }
+  exportPathMap: async function (
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
+    return {
+      '/': { page: '/' },
+      '/music': { page: '/music' }, 
+      '/video': { page: '/video' }, 
+      '/etc': { page: '/etc' }, 
+      '/blog': { page: '/blog' },
+      '/post': { page: '/post' }
+    }
+  },
+}

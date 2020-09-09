@@ -1,4 +1,6 @@
+
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import Welcome from '../components/Welcome'
 import PhotoLinks from '../components/PhotoLinks'
@@ -7,6 +9,12 @@ import Bandcamp from '../components/Bandcamp'
 import About from '../components/About'
 
 export default function Home() {
+    const router = useRouter()
+    const {rd} = router.query
+    console.log("received rd", rd)
+    if (rd){
+      router.push(rd)
+    }
     return (
         <div id='fauxmat-home'>
             <Head>

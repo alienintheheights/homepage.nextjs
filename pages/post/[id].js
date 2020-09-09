@@ -9,8 +9,6 @@ import { sortBy } from 'lodash'
 import LoadingIndicator from '../../components/LoadingIndicator'
 import { WP_POSTS_URL, WP_POST_URL, WP_COMMENTS_URL } from '../../constants'
 
-
-const cache = {}
 export default function Post({ post, comments}) {
     const router = useRouter();
 
@@ -40,7 +38,7 @@ export default function Post({ post, comments}) {
         return (
             <div ref={postRef} className='fauxmat-post-masthead'>
                 <Head>
-                    <title>{post.title}</title>
+                    <title>{currentPost.title.rendered}</title>
                 </Head>
                 <div id='fauxmat-post-title' 
                     dangerouslySetInnerHTML={{__html: currentPost.title.rendered}} />
@@ -139,7 +137,6 @@ export default function Post({ post, comments}) {
 
 // for /post/[postId]
 export const getStaticPaths = async () => {
-   
      // Call an external API endpoint to get posts
      const res = await fetch(WP_POSTS_URL + 1)
      const posts = await res.json()
@@ -147,7 +144,6 @@ export const getStaticPaths = async () => {
      const paths = posts.map((post) => ({
         params: { id: post.id.toString() },
     }))
-    
     return { paths, fallback: false }
 
  
@@ -155,10 +151,9 @@ export const getStaticPaths = async () => {
 
   // This function gets called at build time
   export const getStaticProps = async ({ params }) => {
-
-   // you have access to the postId params that you returns from
-   // getStaticPaths here
-   const postId = params.id 
+    // you have access to the postId params that you returns from
+    // getStaticPaths here
+    const postId = params.id 
 
     // Call an external API endpoint to get posts
     const res = await fetch(WP_POST_URL  + postId + '?_embed=1')
