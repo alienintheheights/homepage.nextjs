@@ -7,6 +7,7 @@ export const WP_POSTS_URL = WP_BASE_URL + '/posts?_embed=1&per_page=' + WP_PER_P
 export const WP_POST_URL = WP_BASE_URL + '/posts/'
 export const WP_COMMENTS_URL = WP_BASE_URL + '/comments?per_page=100&post='
 
+export const GA_TRACKING_ID = 'UA-177463739-1'
 export const HELLOS = {
     Chinese: '你好',
     French: 'Bonjour',

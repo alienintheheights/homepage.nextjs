@@ -11,6 +11,7 @@ import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css' // Import the CSS
 config.autoAddCss = false // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
 
+import { GA_TRACKING_ID } from '../constants'
 // eslint-disable-next-line react/prop-types
 function MyApp({ Component, pageProps }) {
     return (
@@ -19,11 +20,20 @@ function MyApp({ Component, pageProps }) {
                 <title>Hi there!</title>
                 <link rel="icon" href="/favicon.ico" />
                 <script
+                    async
+                    src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+                />
+                <script
                     dangerouslySetInnerHTML={{
-                        __html: ` window.dataLayer = window.dataLayer || [];
+                        __html: `
+                        window.dataLayer = window.dataLayer || [];
                         function gtag(){dataLayer.push(arguments);}
                         gtag('js', new Date());
-                        gtag('config', 'UA-177463739-1'); `
+
+                        gtag('config', '${GA_TRACKING_ID}', {
+                        page_path: window.location.pathname,
+                        });
+                        `
                     }}
                 />
             </Head>
