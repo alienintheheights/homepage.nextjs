@@ -21,21 +21,9 @@ function MyApp({ Component, pageProps }) {
                 <script
                     dangerouslySetInnerHTML={{
                         __html: ` window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-            
-                  gtag('config', 'UA-177463739-1');
-                  window.addEventListener("hashchange", e => {
-                    if (window.location.hash === '#!' || window.location.hash === '#') {
-                      gtag('config', 'UA-177463739-1', {
-                              'page_path': location.pathname + location.search
-                      });
-                    } else {
-                      gtag('config', 'UA-177463739-1', {
-                              'page_path': location.pathname + location.search + location.hash
-                      });
-                    };
-                  });`
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'UA-177463739-1'); `
                     }}
                 />
             </Head>
