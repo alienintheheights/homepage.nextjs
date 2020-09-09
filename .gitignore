@@ -4,7 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
-
+.htaccess
+error.php
 # testing
 /coverage
 
