@@ -9,7 +9,7 @@ export default function Footer() {
             </span>
             <span className="fauxmat-disclaimer">
                 Written from{' '}
-                <a target="_new" href="https://github.com/alienintheheights/homepage.io">
+                <a target="_new" href="https://github.com/alienintheheights/homepage.nextjs">
                     scratch in ReactJS/NextJS
                 </a>{' '}
                 by me. Copyright 2020.
