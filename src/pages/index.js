@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 import Welcome from '../components/Welcome'
@@ -17,30 +16,6 @@ export default function Home() {
     }
     return (
         <div id="fauxmat-home">
-            <Head>
-                <title>Hi there!</title>
-                <link rel="icon" href="/favicon.ico" />
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: ` window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-            
-                  gtag('config', 'UA-177463739-1');
-                  window.addEventListener("hashchange", e => {
-                    if (window.location.hash === '#!' || window.location.hash === '#') {
-                      gtag('config', 'UA-177463739-1', {
-                              'page_path': location.pathname + location.search
-                      });
-                    } else {
-                      gtag('config', 'UA-177463739-1', {
-                              'page_path': location.pathname + location.search + location.hash
-                      });
-                    };
-                  });`
-                    }}
-                />
-            </Head>
             <Welcome />
             <About />
             <MusicLinks number="1" hideTitle={true} />
