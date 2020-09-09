@@ -1,17 +1,17 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import ReactPlayer from 'react-player'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Grid from '@material-ui/core/Grid'
+
 import { videoJson } from '../data/videos'
 import { listFilter } from '../utils/listfilter'
 
 export default function VideoLinks(props) {
-    // eslint-disable-next-line react/prop-types
     const displayCount = (props && props.number) || 0
-    // eslint-disable-next-line react/prop-types
     const useFeatured = (props && props.featured) || false
-    // eslint-disable-next-line react/prop-types
     const hideTitle = props && props.hideTitle
     return (
         <Grid container spacing={1}>
@@ -40,4 +40,10 @@ export default function VideoLinks(props) {
                 })}
         </Grid>
     )
+}
+
+VideoLinks.propTypes = {
+    number: PropTypes.number.isRequired,
+    featured: PropTypes.bool.optional,
+    hideTitle: PropTypes.bool.optional
 }

@@ -10,11 +10,11 @@ export default function About() {
                 <Row>
                     <Col md={7} sm={12} lg={8}>
                         <h1>Andrew Lienhard </h1>
-                        Hi, I'm a software engineer and musician living in Houston, Texas. This site
+                        Hi, I&apos;m a software engineer and musician living in Houston, Texas. This
                         is mostly about non-software things like <Link href="music">
                             music
                         </Link> and <Link href="blog">writing</Link>. Be sure to also check out my
-                        wife's amazing creations at{' '}
+                        wife&apos;s amazing creations at{' '}
                         <a href="http://sparrowandthenest.com">Sparrow and the Nest</a>.
                     </Col>
                     <Col md={5} sm={12} lg={4}>

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
+
 import { Card, Row, Col } from 'react-bootstrap'
 
 import { linkJson } from '../data/links'
@@ -6,11 +8,8 @@ import { listFilter } from '../utils/listfilter'
 import { MOBILE_MAX } from '../constants'
 
 export default function PhotoLinks(props) {
-    // eslint-disable-next-line react/prop-types
     const displayCount = (props && props.number) || 0
-    // eslint-disable-next-line react/prop-types
     const useFeatured = props && props.featured
-    // eslint-disable-next-line react/prop-types
     const alternate = props && props.alternate
 
     const shouldAlternate = (w) => w > MOBILE_MAX && w < 1000
@@ -61,4 +60,10 @@ export default function PhotoLinks(props) {
                 })}
         </div>
     )
+}
+
+PhotoLinks.propTypes = {
+    number: PropTypes.number.optional,
+    featured: PropTypes.bool.optional,
+    alternate: PropTypes.bool.optional
 }

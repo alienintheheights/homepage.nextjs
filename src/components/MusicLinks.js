@@ -1,15 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import { Card, Row, Col } from 'react-bootstrap'
 
 import { musicJson } from '../data/music'
 import { listFilter } from '../utils/listfilter'
 
 export default function MusicLinks(props) {
-    // eslint-disable-next-line react/prop-types
     const displayCount = (props && props.number) || 0
-    // eslint-disable-next-line react/prop-types
     const useFeatured = (props && props.featured) || false
-    // eslint-disable-next-line react/prop-types
     const hideTitle = props && props.hideTitle
     return (
         <div>
@@ -30,4 +29,10 @@ export default function MusicLinks(props) {
                 })}
         </div>
     )
+}
+
+MusicLinks.propTypes = {
+    number: PropTypes.number.isRequired,
+    featured: PropTypes.bool.optional,
+    hideTitle: PropTypes.bool.optional
 }
