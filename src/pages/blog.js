@@ -55,7 +55,7 @@ export default function Blog({ posts }) {
 }
 
 Blog.propTypes = {
-    posts: PropTypes.object.isRequired
+    posts: PropTypes.array.isRequired
 }
 
 // This function gets called at build time

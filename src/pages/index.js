@@ -10,7 +10,6 @@ import About from '../components/About'
 export default function Home() {
     const router = useRouter()
     const { rd } = router.query
-    console.log('received rd', rd)
     if (rd) {
         router.push(rd)
     }
