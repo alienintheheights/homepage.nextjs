@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
+import PropTypes from 'prop-types'
 
 import Head from 'next/head'
 import NavHome from '../components/NavHome'
@@ -12,7 +13,6 @@ import '@fortawesome/fontawesome-svg-core/styles.css' // Import the CSS
 config.autoAddCss = false // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
 
 import { GA_TRACKING_ID } from '../constants'
-// eslint-disable-next-line react/prop-types
 function MyApp({ Component, pageProps }) {
     return (
         <div id="root">
@@ -49,4 +49,10 @@ function MyApp({ Component, pageProps }) {
         </div>
     )
 }
+
+MyApp.propTypes = {
+    Component: PropTypes.object.isRequired,
+    pageProps: PropTypes.object.isRequired
+}
+
 export default MyApp
