@@ -18,7 +18,8 @@ export default function Etc() {
             </div>
             <PhotoLinks alternate={false} />
             <div className="fauxmat-disclaimer">
-                Note: many of these links go to an S3 bucket on Amazon. Don't mind the strange URLs.
+                Note: many of these links go to an S3 bucket on Amazon. Don&apos;t mind the strange
+                URLs.
             </div>
         </div>
     )
