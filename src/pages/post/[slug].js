@@ -201,7 +201,9 @@ export const getStaticPaths = async () => {
     const posts = await res.json()
 
     const paths = posts.map((post) => ({
-        params: { slug: post.slug }
+        params: {
+            slug: post.slug
+        }
     }))
     return { paths, fallback: false }
 }
@@ -230,7 +232,7 @@ export const getStaticProps = async ({ params }) => {
 
     const post = postArray[0]
     //console.log('post id ', post)
-    const commentsRes = await fetch(WP_COMMENTS_URL + '?_embed=1&slug=' + slug)
+    const commentsRes = await fetch(WP_COMMENTS_URL + post.id)
     const commentsRaw = await commentsRes.json()
     const comments = sortBy(commentsRaw, ['parent', 'date'])
     // By returning { props: posts }, the Blog component
