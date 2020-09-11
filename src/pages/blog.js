@@ -28,9 +28,9 @@ export default function Blog({ posts }) {
                         }
                         return (
                             <Link
-                                key={`post-key-${post.id}`}
-                                href="/post/[id]"
-                                as={`/post/${post.id}`}>
+                                key={`post-key-${post.slug}`}
+                                href="/post/[slug]"
+                                as={`/post/${post.slug}`}>
                                 <Col
                                     sm={12}
                                     md={6}

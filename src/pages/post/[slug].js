@@ -13,6 +13,10 @@ import { WP_POSTS_URL, WP_POST_URL, WP_COMMENTS_URL } from '../../constants'
 export default function Post({ post, comments }) {
     const router = useRouter()
 
+    if (!post) {
+        router.push('/blogs')
+    }
+
     if (router.isFallback) {
         return <LoadingIndicator />
     }
@@ -190,38 +194,60 @@ Post.propTypes = {
     comments: PropTypes.array.isRequired
 }
 
-// for /post/[postId]
+// for /post/[slug]
 export const getStaticPaths = async () => {
     // Call an external API endpoint to get posts
     const res = await fetch(WP_POSTS_URL + 1)
     const posts = await res.json()
 
     const paths = posts.map((post) => ({
-        params: { id: post.id.toString() }
+        params: { slug: post.slug }
     }))
     return { paths, fallback: false }
 }
 
 // This function gets called at build time
 export const getStaticProps = async ({ params }) => {
-    // you have access to the postId params that you returns from
+    // you have access to the slug params that you returns from
     // getStaticPaths here
-    const postId = params.id
-
+    const slug = params.slug
     // Call an external API endpoint to get posts
-    const res = await fetch(WP_POST_URL + postId + '?_embed=1')
-    const post = await res.json()
+    // TODO catch 404
+    const postArray = await fetch(WP_POST_URL + '?_embed=1&slug=' + slug)
+        .then((res) => {
+            if (res.error) {
+                return getEmptyResponse()
+            }
+            return res.json()
+        })
+        .catch(() => {
+            return getEmptyResponse()
+        })
 
-    const commentsRes = await fetch(WP_COMMENTS_URL + postId)
+    if (!postArray || postArray.length !== 1) {
+        return getEmptyResponse()
+    }
+
+    const post = postArray[0]
+    //console.log('post id ', post)
+    const commentsRes = await fetch(WP_COMMENTS_URL + '?_embed=1&slug=' + slug)
     const commentsRaw = await commentsRes.json()
     const comments = sortBy(commentsRaw, ['parent', 'date'])
-
     // By returning { props: posts }, the Blog component
     // will receive `posts` as a prop at build time
     return {
         props: {
             post,
             comments
+        }
+    }
+}
+
+const getEmptyResponse = () => {
+    return {
+        props: {
+            post: null,
+            comments: null
         }
     }
 }
