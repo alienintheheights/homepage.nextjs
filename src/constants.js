@@ -1,6 +1,6 @@
 export const MOBILE_MAX = 700
 // filter[orderby]=date&order=desc&
-export const WP_PER_PAGE = 32
+export const WP_PER_PAGE = 36
 const WP_ROOT_URL = 'https://andrewlienhard.io'
 export const WP_BASE_URL = WP_ROOT_URL + '/press/wp-json/wp/v2'
 export const WP_POSTS_URL = WP_BASE_URL + '/posts?_embed=1&per_page=' + WP_PER_PAGE + '&page='
